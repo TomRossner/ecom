@@ -5,9 +5,12 @@
   - Python 3
   - pgAdmin 4
 
-2. In pgAdmin, create a new Database called ```ecomDB``` .
+2. Clone the repo
+  ```git clone https://github.com/TomRossner/ecom.git```
 
-3. If needed, edit the .env file accordingly. The .env file should look like so:
+3. In pgAdmin, create a new Database called ```ecomDB``` .
+
+4. If needed, edit the .env file accordingly. The .env file should look like so:
 
   ```bash
 SECRET_KEY='some-secretKey-in-settings.py'
@@ -20,23 +23,23 @@ The ```SECRET_KEY``` is the Django secret key which can be found in ```server/co
 
 Make sure ```DB_NAME = ecomDB``` and ```DB_PORT``` matches the port you have set up.
 
-4. Install frontend dependencies
+5. Install frontend dependencies
 
 ```bash
 npm i
 ```
-5. Run the API
+6. Run the API
 
 ```bash
 npm run api
 ```
-6. Run the app in development mode
+7. Run the app in development mode
 
 ```bash
 npm run dev
 ```
 
-7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the Ecom web application.
+8. Open [http://localhost:3000](http://localhost:3000) with your browser to see the Ecom web application.
 
 
 ## About Ecom
