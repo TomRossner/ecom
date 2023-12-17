@@ -46,5 +46,9 @@ npm run dev
 
 Ecom is a Full-Stack e-commerce application developed with NextJS, TypeScript, TailwindCSS, Django and PostgreSQL.
 
+## Known problems
 
+- CSRF: disabled CSRF protection for POST HTTP requests, couldn't get it to work on time but still was able to pull the CSRF token and serve it as a header.
+- Shop items stocks: I wanted to update stocks when adding an item to the cart but didn't find the time to do so.
+- Auth: It would be easier to keep track of orders using an authentication system, but wasn't asked to do that.
 
