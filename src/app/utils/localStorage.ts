@@ -22,21 +22,3 @@ export const fetchCart = (): TCart => {
         return null;
     }
 }
-
-// Adds order to order history in LocalStorage.
-export const addOrderToHistory = (order: IOrder): void => {
-    const stringifiedOrder: string = JSON.stringify(order);
-
-    return localStorage.setItem('Ecom_Order_History', stringifiedOrder);
-}
-
-// Fetches order history from LocalStorage.
-export const fetchOrderHistory = (): TOrder => {
-    try {
-        const stringifiedOrderHistory: string | null = localStorage.getItem('Ecom_Order_History');
-        return JSON.parse(stringifiedOrderHistory!) as IOrder;
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
-}

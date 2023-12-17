@@ -30,7 +30,7 @@ export default function Navbar() {
                 
                 <ul className="flex gap-2">
                     <Link href={'/cart'} className="flex items-center gap-2 px-2 py-1 hover:text-blue-500 transition-all duration-75">Cart
-                        <span className="text-blue-400">({cart?.items?.length ? cart.items.length : 0})</span>
+                        {cart && <span className="text-blue-400">({cart?.items?.length ? cart.items.length : 0})</span>}
                     </Link>
 
                     <Link href={'/orders'} className="flex items-center gap-2 px-2 py-1 hover:text-blue-500 transition-all duration-75">Orders</Link>

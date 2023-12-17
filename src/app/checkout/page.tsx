@@ -236,9 +236,9 @@ export default function Checkout() {
                 />
                 {errors.id?.message && <p className="text-red-600 px-2 py-1 rounded bg-red-300">{errors.id?.message}</p>}
 
-                <p className="text-black w-full text-end mt-5 px-5">
+                <p className="text-black w-full text-end mt-5 px-5 font-bold">
                     Total price: 
-                    <span className="font-bold text-black">${cart?.totalPrice}</span>
+                    <span className="font-normal text-black"> ${cart?.totalPrice}</span>
                 </p>
 
                 <button type="submit" disabled={isLoading} className={`text-blue-400 font-bold text-xl ${!isLoading ? 'bg-yellow-300' : 'bg-yellow-200'} rounded py-2 hover:bg-yellow-400 mt-5`}>Pay now</button>
