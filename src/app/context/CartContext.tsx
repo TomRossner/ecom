@@ -2,18 +2,13 @@
 
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { clearCart, fetchCart, saveCart } from "../utils/localStorage";
-import { TCart, TOrder } from "../utils/types";
-import { ICartItem, IOrder, IShopItem } from "../utils/interfaces";
-import { fetchOrders } from "../services/api";
+import { TCart } from "../utils/types";
+import { ICartItem, IShopItem } from "../utils/interfaces";
 
 // Interface representing the CartContext used when initializing createContext.
 export interface ICartContext {
     cart: TCart;
-    orders: IOrder[] | null;
-    lastOrder: TOrder;
-    setLastOrder: (order: TOrder) => void;
     emptyCart: () => void;
-    getOrders: (email: string) => void;
     updateCart: (newItem: IShopItem) => void;
     removeItem: (id: number) => void;
     decreaseQuantity: (id: number) => void;
@@ -26,8 +21,6 @@ export const CartContext = createContext<ICartContext | null>(null);
 // Cart context provider.
 export const CartProvider = (props: PropsWithChildren) => {
     const [cart, setCart] = useState<TCart>(fetchCart()); // Get items from LocalStorage
-    const [orders, setOrders] = useState<IOrder[] | null>(null);
-    const [lastOrder, setLastOrder] = useState<TOrder>(null);
 
     // updateCart is responsible for 3 things:
     //
@@ -189,15 +182,9 @@ export const CartProvider = (props: PropsWithChildren) => {
         )
     }
 
-    // Empty cart.
+    // Empty cart. Sets cart to null.
     const emptyCart = (): void => {
         setCart(null);
-    }
-
-    // Get orders from DB and populate the orders state.
-    const getOrders = async (email: string): Promise<void> => {
-        const pastOrders = await fetchOrders(email);
-        setOrders(pastOrders);
     }
 
     // Takes care of LocalStorage.
@@ -214,11 +201,7 @@ export const CartProvider = (props: PropsWithChildren) => {
     // Value passed to the context provider.
     const value: ICartContext = {
         cart,
-        orders,
-        lastOrder,
-        setLastOrder,
         emptyCart,
-        getOrders,
         updateCart,
         removeItem,
         increaseQuantity,

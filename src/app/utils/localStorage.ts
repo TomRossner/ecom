@@ -1,6 +1,5 @@
-import axios, { AxiosResponse } from "axios";
 import { ICart, IOrder } from "./interfaces";
-import { TCart } from "./types";
+import { TCart, TOrder } from "./types";
 
 // Saves cart to LocalStorage.
 export const saveCart = (cart: ICart): void => {
@@ -32,7 +31,7 @@ export const addOrderToHistory = (order: IOrder): void => {
 }
 
 // Fetches order history from LocalStorage.
-export const fetchOrderHistory = (): IOrder | null => {
+export const fetchOrderHistory = (): TOrder => {
     try {
         const stringifiedOrderHistory: string | null = localStorage.getItem('Ecom_Order_History');
         return JSON.parse(stringifiedOrderHistory!) as IOrder;

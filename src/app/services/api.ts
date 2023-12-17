@@ -29,16 +29,6 @@ export const getProducts = async (): Promise<AxiosResponse> => {
     }
 }
 
-// Updates stocks values.
-// export const updateStocks = async (cartItems: ICartItem[]): Promise<AxiosResponse> => {
-//     try {
-//         return await axios.post('update_stocks', {cartItems});
-//     } catch (error) {
-//         console.error(error);
-//         throw new Error(`Failed updating from API (${API_URL}/update-stocks)`);
-//     }
-// }
-
 // Creates Order object.
 export const createOrder = (cart: TCart, email: string): IOrder => {
     const order: IOrder = {

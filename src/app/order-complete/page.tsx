@@ -1,11 +1,11 @@
 'use client'
 
 import { FaCheckCircle } from "react-icons/fa";
-import useCart from "../hooks/useCart";
 import Link from "next/link";
+import useOrders from "../hooks/useOrders";
 
 export default function OrderComplete() {
-    const {lastOrder} = useCart();
+    const {lastOrder} = useOrders();
 
     return (
         <>

@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect } from "react";
-import useCart from "../hooks/useCart"
 import { IOrder } from "../utils/interfaces";
 import Header from "../components/Header";
 import OrderContainer from "../components/OrderContainer";
+import useOrders from "../hooks/useOrders";
 
 export default function OrdersHistory() {
-    const {orders, getOrders, lastOrder} = useCart();
+    const {orders, getOrders, lastOrder} = useOrders();
 
     // Get past orders using last order's email.
     useEffect(() => {

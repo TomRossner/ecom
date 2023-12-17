@@ -7,9 +7,10 @@ import useCart from "../hooks/useCart";
 import { CARD_NUMBER_REGEX, EMAIL_REGEX, ID_REGEX, NAME_REGEX, PHONE_NUMBER_REGEX, SECURITY_CODE_REGEX } from "../utils/regex";
 import { CARD_NUMBER_LENGTH, ID_LENGTH, NAME_MAX_LENGTH, NAME_MIN_LENGTH, PHONE_NUMBER_MAX_LENGTH, PHONE_NUMBER_MIN_LENGTH, SECURITY_CODE_LENGTH } from "../utils/constants";
 import { useEffect, useRef, useState } from "react";
-import { createOrder, saveOrder } from "../services/api";
+import { saveOrder } from "../services/api";
 import { ICart, IValues } from "../utils/interfaces";
 import { clearCart } from "../utils/localStorage";
+import useOrders from "../hooks/useOrders";
 
 // Default form values object.
 const defaultValues: IValues = {
@@ -37,7 +38,8 @@ export default function Checkout() {
         defaultValues: defaultValues
     });
 
-    const {cart, emptyCart, getOrders, setLastOrder} = useCart();
+    const {cart, emptyCart} = useCart();
+    const {getOrders, setLastOrder} = useOrders();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const orderCompleteBtnRef = useRef<HTMLAnchorElement | null>(null);
