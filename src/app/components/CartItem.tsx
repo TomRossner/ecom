@@ -3,6 +3,7 @@ import { BsTrash3Fill } from "react-icons/bs";
 import useCart from '../hooks/useCart';
 import { ICartItem } from '../utils/interfaces';
 
+// Interface representing CartItem props.
 interface ICartItemProps {
     item: ICartItem;
 }
@@ -22,8 +23,10 @@ const CartItem = ({item}: ICartItemProps) => {
                 className="rounded max-w-xs h-90 mx-auto"
             />
         </div>
+
         <p className="text-black">{title}</p>
         <p className="text-black">${price}</p>
+        
         <div className="flex items-center text-black gap-3">Qty: 
             <div className="flex items-center">
                 <button type="button" className="px-3 py-1 rounded-l text-black text-xl bg-slate-200 hover:bg-slate-400" onClick={() => increaseQuantity(id)}>+</button>
@@ -31,7 +34,10 @@ const CartItem = ({item}: ICartItemProps) => {
                 <button type="button" className="px-3 py-1 rounded-r text-black text-xl bg-slate-200 hover:bg-slate-400" onClick={() => decreaseQuantity(id)}>-</button>
             </div>
         </div>
-        <button type="button" onClick={() => removeItem(id)} className="bg-red-400 rounded p-2 mx-auto hover:bg-red-500 mt-2" title='Remove from cart'><BsTrash3Fill/></button>
+
+        <button type="button" onClick={() => removeItem(id)} className="bg-red-400 rounded p-2 mx-auto hover:bg-red-500 mt-2" title='Remove from cart'>
+            <BsTrash3Fill/>
+        </button>
     </div>
   )
 }

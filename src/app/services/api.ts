@@ -44,7 +44,7 @@ export const createOrder = (cart: TCart, email: string): IOrder => {
 }
 
 // Saves order in DB.
-export const saveOrder = async (cart: TCart, email: string): Promise<IOrder> => {
+export const saveOrder = async (cart: TCart, email: string): Promise<AxiosResponse> => {
     try {
         // Order object.
         const order = createOrder(cart, email);
@@ -52,14 +52,12 @@ export const saveOrder = async (cart: TCart, email: string): Promise<IOrder> => 
         // CSRF Token retrieved from Django template.
         const csrfToken = await getCSRFToken();
     
-        const {data: orderData} = await axios.post('/confirm/', order, {
+        return await axios.post('/confirm/', order, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken
             }
-        });
-
-        return orderData;
+        })
     } catch (error) {
         console.error(error);
         throw new Error('Failed saving order');

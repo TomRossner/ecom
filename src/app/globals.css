@@ -17,6 +17,7 @@
 }
 
 body {
+  user-select: none;
   width: 100vw;
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));

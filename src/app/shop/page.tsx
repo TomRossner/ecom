@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Header from "../components/Header";
 import { getProducts } from "../services/api";
 import ShopItem from "../components/ShopItem";
 import { IShopItem } from "../utils/interfaces";
 import { TElectronic } from "../utils/types";
+import ShopSkeleton from "../components/ShopSkeleton";
 
 export default function Shop() {
     const [electronics, setElectronics] = useState<IShopItem[] | null>(null);
@@ -39,11 +40,16 @@ export default function Shop() {
         <section id="shop" className="bg-white min-h-screen">
             <Header text="Shop"/>
 
-            <div className="flex gap-5 flex-wrap p-20 justify-center">
-                {electronics?.map(
-                    (product: IShopItem, idx: number) => <ShopItem item={product} key={idx}/>
-                )}
-            </div>
+                {electronics?.length
+                    ?   (
+                            <div className="flex gap-5 flex-wrap p-20 justify-center">
+                                {electronics?.map(
+                                    (product: IShopItem, idx: number) => <ShopItem item={product} key={idx}/>
+                                )}
+                            </div>
+                        )
+                    : <ShopSkeleton/>
+                }    
         </section>
     )
 }

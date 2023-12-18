@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { MdMenu } from "react-icons/md";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { RxCross2 } from "react-icons/rx";
 import useCart from "../hooks/useCart";
 
@@ -30,7 +30,11 @@ export default function Navbar() {
                 
                 <ul className="flex gap-2">
                     <Link href={'/cart'} className="flex items-center gap-2 px-2 py-1 hover:text-blue-500 transition-all duration-75">Cart
-                        {cart && <span className="text-blue-400">({cart?.items?.length ? cart.items.length : 0})</span>}
+                            {<span className="text-blue-400">
+                                <Suspense fallback={(0)}>
+                                    ({cart?.items?.length ? cart.items.length : 0})
+                                </Suspense>
+                            </span>}
                     </Link>
 
                     <Link href={'/orders'} className="flex items-center gap-2 px-2 py-1 hover:text-blue-500 transition-all duration-75">Orders</Link>
